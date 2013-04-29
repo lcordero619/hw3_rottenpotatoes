@@ -13,6 +13,8 @@ group :development, :test do
   gem 'capybara', '2.0.3'
   gem 'launchy'
   gem 'rspec-rails'
+  gem 'ZenTest'
+  gem 'simplecov'
 end
 group :test do
   gem 'cucumber-rails'

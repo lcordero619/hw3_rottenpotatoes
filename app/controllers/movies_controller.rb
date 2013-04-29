@@ -1,5 +1,17 @@
 class MoviesController < ApplicationController
 
+  def director_search
+    movie = Movie.find(params[:id])
+    # should check for errors here
+    begin
+      @movies = Movie.search_by_director(movie.director)
+    rescue ArgumentError
+      flash[:warning] = "'#{movie.title}' has no director info"
+      flash.keep
+      redirect_to movies_path
+    end
+  end
+
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
